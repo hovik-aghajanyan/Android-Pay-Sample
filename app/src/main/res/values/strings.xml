@@ -3,4 +3,7 @@
     <string name="public_key">BJ/085uIBjRq6dx03VrHGUJ03XMmrFktr8H5cPYU6C4g9txnhgaa1PsKMauMz4nffBVlgVOHA1abOV49bixhZg8=</string>
     <string name="zero_money">%1$s0.00</string>
     <string name="enter_card_details">Enter card details</string>
+    <string name="payment_successful">Payment successful</string>
+    <string name="payment_declined">Payment declined</string>
+    <string name="please_check_card_details">Please check card details</string>
 </resources>
