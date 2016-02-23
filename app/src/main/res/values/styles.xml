@@ -1,0 +1,11 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="loadingOverlayStyle">@style/loading_overlay</item>
+    </style>
+
+    <style name="light_loading_overlay">
+        <item name="android:background">@color/judo_white_90</item>
+    </style>
+
+</resources>
