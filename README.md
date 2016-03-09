@@ -180,11 +180,10 @@ apiService.androidPayPayment(androidPayRequest)
         });
 ``` 
 ## Going Live
-When it's time to go live, you will need to update your code to point to the production environment.
-Google provides a way of switching environments when creating the GoogleApiClient (used for all requests for Android Pay information). Find where the GoogleApiClient instance is being created in your app and replace ```WalletConstants.ENVIRONMENT_TEST``` with ```WalletConstants.ENVIRONMENT_PRODUCTION```.
+When it's time to go live you will need to update your code to use the production environment for Android Pay and the judoNative SDK:
+ - When creating the GoogleApiClient, replace ```WalletConstants.ENVIRONMENT_TEST``` with ```WalletConstants.ENVIRONMENT_PRODUCTION```
+ - When calling the judo SDK, ensure that ```Judo.setEnvironment(Judo.LIVE);```
 
-In addition to this, check you are using the production environment when using Judo, if you have code that sets the environment this will need to be updated. This should look like:
-```Judo.setEnvironment(Judo.LIVE);```
 
 All code shown is available to view on our [Android Pay sample app GitHub repo](https://github.com/JudoPay/Judo-AndroidPay-Sample).
 
