@@ -11,10 +11,10 @@ Android Pay is compatible with devices running Android OS 4.4 (KitKat) or later.
 ## Application Flow
 When taking a payment using Android Pay the following steps are involved:
   1. The user performs an action that requires a payment and a check is made to see if the user has Android Pay.
-  2. Created Masked Wallet Request and show payment button
-  3. Check the Masked Wallet Response when the user has confirmed to pay with Android Pay.
-  4. With the Masked Wallet request to get the Full Wallet containing the payment token.
-  5. With the Full Wallet, request for judoNative to complete the payment.
+  2. A Masked Wallet Request is created for showing the payment button
+  3. The Masked Wallet Response is received when the user has confirmed to pay with Android Pay.
+  4. A Full Wallet Request is made to request the Android Pay encrypted payload.
+  5. With the Full Wallet Response a request is made using the judoNative Android SDK to complete the payment.
 
 ## Setting up Google Play Services
 The Google Play Services Wallet library allows your app to call Android Pay and request the user to make a payment. To use this library, add a new dependency in the build.gradle file of your app module:
