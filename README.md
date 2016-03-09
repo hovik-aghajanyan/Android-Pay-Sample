@@ -10,26 +10,26 @@ Android Pay is compatible with devices running Android OS 4.4 (KitKat) or later.
 
 ## Application Flow
 When taking a payment using Android Pay the following will be the usual steps involved:
-1. The user performs an action that requires a payment and a check is made to see if the user has Android Pay.
-2. Created Masked Wallet Request and show payment button
-3. Check the Masked Wallet Response when the user has confirmed to pay with Android Pay.
-4. With the Masked Wallet request to get the Full Wallet containing the payment token.
-5. With the Full Wallet, request for judoNative to complete the payment.
+  1. The user performs an action that requires a payment and a check is made to see if the user has Android Pay.
+  2. Created Masked Wallet Request and show payment button
+  3. Check the Masked Wallet Response when the user has confirmed to pay with Android Pay.
+  4. With the Masked Wallet request to get the Full Wallet containing the payment token.
+  5. With the Full Wallet, request for judoNative to complete the payment.
 
 // A Masked Wallet Request is created for showing the Android Pay button
 
 ## Setting up Google Play Services
 The Google Play Services Wallet library allows your app to call Android Pay and request the user to make a payment. To use this library, add a new dependency in the build.gradle file of your app module:
-```
+```groovy
 dependencies {
 	compile 'com.google.android.gms:play-services-wallet:8.4.0'
 }
 ```
 ## Authenticating with Android Pay
 For your app to use the Google Play Services APIs for requesting Android Pay wallet information, you must provide the certificate used to sign your app:
-1. Check your app is signed with a certificate keystore for releasing to Google Play.
-2. Run the gradle task ```signingReport``` to display the SHA1 fingerprint for your app.
-3. Copy the SHA1 certificate to the Google Developers Console.
+  1. Check your app is signed with a certificate keystore for releasing to Google Play.
+  2. Run the gradle task ```signingReport``` to display the SHA1 fingerprint for your app.
+  3. Copy the SHA1 certificate to the Google Developers Console.
 
 See the [Android Pay tutorial](https://developers.google.com/android-pay/android/tutorial) for more information.
 
@@ -182,7 +182,7 @@ apiService.androidPayPayment(androidPayRequest)
             }
         });
 ``` 
-# Going Live
+## Going Live
 When it's time to go live, you will need to update your code to point to the production environment.
 Google provides a way of switching environments when creating the GoogleApiClient (used for all requests for Android Pay information). Find where the GoogleApiClient instance is being created in your app and replace ```WalletConstants.ENVIRONMENT_TEST``` with ```WalletConstants.ENVIRONMENT_PRODUCTION```.
 
