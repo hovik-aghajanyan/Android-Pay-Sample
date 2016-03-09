@@ -23,16 +23,8 @@ dependencies {
 	compile 'com.google.android.gms:play-services-wallet:8.4.0'
 }
 ```
-## Authenticating with Android Pay
-For your app to use the Google Play Services APIs for requesting Android Pay wallet information, you must provide the certificate used to sign your app:
-  1. Check your app is signed with a certificate keystore for releasing to Google Play.
-  2. Run the gradle task ```signingReport``` to display the SHA1 fingerprint for your app.
-  3. Copy the SHA1 certificate to the [Google Developers Console](https://console.developers.google.com/).
 
-See the [Android Pay tutorial](https://developers.google.com/android-pay/android/tutorial) for more information.
-
-## Add the required meta data attributes
-Add the required Google Play Services attributes to your app’s AndroidManifest.xml to enable the Wallet API:
+Next, add the meta data attributes to your app AndroidManifest.xml to enable the Wallet API:
 ```xml
 <meta-data
    android:name="com.google.android.gms.version"
@@ -42,6 +34,15 @@ Add the required Google Play Services attributes to your app’s AndroidManifest
    android:name="com.google.android.gms.wallet.api.enabled"
    android:value="true" />
 ```
+
+## Authenticating with Android Pay
+For your app to use the Google Play Services APIs for requesting Android Pay wallet information, you must provide the certificate used to sign your app:
+  1. Check your app is signed with a certificate keystore for releasing to Google Play.
+  2. Run the gradle task ```signingReport``` to display the SHA1 fingerprint for your app.
+  3. Copy the SHA1 certificate to the [Google Developers Console](https://console.developers.google.com/).
+
+See the [Android Pay tutorial](https://developers.google.com/android-pay/android/tutorial) for more information.
+
 ## Requesting Android Pay information
 ### 1. Check if Android Pay is available on the device
 To check if Android Pay is available we'll first need to create a GoogleApiClient, this will be used for all calls to Google Play APIs:
