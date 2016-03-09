@@ -181,7 +181,7 @@ apiService.androidPayPayment(androidPayRequest)
 ``` 
 ## Going Live
 When it's time to go live you will need to update your code to use the production environment for Android Pay and the judoNative SDK:
- - When calling the Google Play Wallet library, ensure that ```WalletConstants.ENVIRONMENT_TEST``` is replaced with ```WalletConstants.ENVIRONMENT_PRODUCTION```
+ - When calling the Google Play Wallet library, ensure that ```WalletConstants.ENVIRONMENT_PRODUCTION``` is used instead of ```WalletConstants.ENVIRONMENT_TEST```. 
  - When calling the judo SDK, ensure that the LIVE environment is set using: ```Judo.setEnvironment(Judo.LIVE);```
 
 All code shown is available to view on our [Android Pay sample app GitHub repo](https://github.com/JudoPay/Judo-AndroidPay-Sample).
