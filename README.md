@@ -64,7 +64,7 @@ Wallet.Payments.isReadyToPay(googleApiClient).setResultCallback(new ResultCallba
    }
 });
 ```
-#### 2. Show the Android Pay button
+### 2. Show the Android Pay button
 If the user is ready to pay with  Android Pay we can show a pay button by creating a SupportWalletFragment:
 
 Define the tokenisation parameters containing the public key you received when setting up your judo account to use with Android Pay:
@@ -109,7 +109,7 @@ getSupportFragmentManager()
     .replace(R.id.my_layout, walletFragment)
     .commit();
 ```
-#### 3. Receiving the MaskedWallet
+### 3. Receiving the MaskedWallet
 Once the user has confirmed to make a payment with Android Pay, you will receive a MaskedWallet with the masked payment information and address details. Override the ```onActivityResult``` method in your Activity to receive the MaskedWallet:
 ```java
 @Override
@@ -126,7 +126,7 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
         }
     }
 ```
-#### 4. Requesting the FullWallet
+### 4. Requesting the FullWallet
 To request the FullWallet containing the encrypted payment token, perform a FullWalletRequest with the payment amount and Google Transaction ID:
 ```java
 FullWalletRequest fullWalletRequest = FullWalletRequest.newBuilder()
@@ -139,7 +139,7 @@ FullWalletRequest fullWalletRequest = FullWalletRequest.newBuilder()
 
 Wallet.Payments.loadFullWallet(googleApiClient, fullWalletRequest, FULL_WALLET_REQUEST);
 ```
-#### 5. Receiving the FullWallet
+### 5. Receiving the FullWallet
 The response from the FullWalletRequest will be received in the Activity result:
 ```java
 @Override
@@ -156,7 +156,7 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
         }
     }
 ```
-#### 6. Performing a payment with the judoNative SDK:
+### 6. Performing a payment with the judoNative SDK:
 To complete the payment, create an AndroidPayRequest with the token from the FullWallet response:
 ```java
 AndroidPayRequest androidPayRequest = new AndroidPayRequest.Builder()
