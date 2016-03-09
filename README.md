@@ -1,1 +1,1 @@
-# judoNative Android Pay Sample App
+# Android Pay judoNative Integration Guide
