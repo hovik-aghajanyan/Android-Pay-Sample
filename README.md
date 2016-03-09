@@ -1,5 +1,5 @@
-# Android Pay™ judo Integration Guide
-Android Pay is a mobile payment solution that offers further simplicity, security and choice when making purchases with Android phones.
+# Android Pay judo Integration Guide
+Android Pay™ is a mobile payment solution that offers further simplicity, security and choice when making purchases with Android phones.
 
 With Android Pay merchants can accept payments for physical goods and buyers can grant merchants access to the shipping and payment information stored in their Google account.
 
