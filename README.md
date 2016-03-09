@@ -9,7 +9,7 @@ The judoNative Android SDK can be used to accept Android Pay payments made in yo
 Android Pay is compatible with devices running Android OS 4.4 (KitKat) or later. In addition to this, please check that you have a public key, received when setting up your judo account to use with Android Pay.
 
 ## Application Flow
-When taking a payment using Android Pay the following will be the usual steps involved:
+When taking a payment using Android Pay the following steps are involved:
   1. The user performs an action that requires a payment and a check is made to see if the user has Android Pay.
   2. Created Masked Wallet Request and show payment button
   3. Check the Masked Wallet Response when the user has confirmed to pay with Android Pay.
