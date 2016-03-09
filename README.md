@@ -43,7 +43,7 @@ For your app to use the Google Play Services APIs for requesting Android Pay wal
 
 See the [Android Pay tutorial](https://developers.google.com/android-pay/android/tutorial) for more information.
 
-## Requesting Android Pay information
+## Requesting Android Pay
 ### 1. Check if Android Pay is available on the device
 To check if Android Pay is available we'll first need to create a GoogleApiClient, this will be used for all calls to Google Play APIs:
 ```java
@@ -155,7 +155,10 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
         }
     }
 ```
-### 6. Performing a payment with the judoNative SDK:
+
+## Using the judoNative SDK with Android Pay
+
+### 1. To perform a payment with the judoNative SDK:
 To complete the payment, create an AndroidPayRequest with the token from the FullWallet response:
 ```java
 AndroidPayRequest androidPayRequest = new AndroidPayRequest.Builder()
