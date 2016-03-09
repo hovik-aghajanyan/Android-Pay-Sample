@@ -65,9 +65,7 @@ Wallet.Payments.isReadyToPay(googleApiClient).setResultCallback(new ResultCallba
 });
 ```
 ### 2. Show the Android Pay button
-If the user is ready to pay with  Android Pay we can show a pay button by creating a SupportWalletFragment:
-
-Define the tokenisation parameters containing the public key you received when setting up your judo account to use with Android Pay:
+The Android Pay button is shown by creating a SupportWalletFragment, configured with your judo Android Pay public key and a Masked Wallet Request with the details of the payment.
 ```java
 PaymentMethodTokenizationParameters parameters = PaymentMethodTokenizationParameters.newBuilder()
 		.setPaymentMethodTokenizationType(PaymentMethodTokenizationType.NETWORK_TOKEN)
