@@ -16,8 +16,6 @@ When taking a payment using Android Pay the following steps are involved:
   4. With the Masked Wallet request to get the Full Wallet containing the payment token.
   5. With the Full Wallet, request for judoNative to complete the payment.
 
-// A Masked Wallet Request is created for showing the Android Pay button
-
 ## Setting up Google Play Services
 The Google Play Services Wallet library allows your app to call Android Pay and request the user to make a payment. To use this library, add a new dependency in the build.gradle file of your app module:
 ```groovy
@@ -29,7 +27,7 @@ dependencies {
 For your app to use the Google Play Services APIs for requesting Android Pay wallet information, you must provide the certificate used to sign your app:
   1. Check your app is signed with a certificate keystore for releasing to Google Play.
   2. Run the gradle task ```signingReport``` to display the SHA1 fingerprint for your app.
-  3. Copy the SHA1 certificate to the Google Developers Console.
+  3. Copy the SHA1 certificate to the [Google Developers Console](https://console.developers.google.com/).
 
 See the [Android Pay tutorial](https://developers.google.com/android-pay/android/tutorial) for more information.
 
