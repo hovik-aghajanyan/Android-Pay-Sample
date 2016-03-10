@@ -39,8 +39,7 @@ Next, add the meta data attributes to your app AndroidManifest.xml to enable the
 For your app to use the Google Play Services APIs for requesting Android Pay wallet information, you must provide the certificate used to sign your app:
   1. Check your app is signed with a certificate keystore for releasing to Google Play.
   2. Run the gradle task ```signingReport``` to display the SHA1 fingerprint for your app.
-  3. Create a new app in the [Google Developers Console](https://console.developers.google.com/) with OAuth credentials, using the SHA1 fingerprint.
-
+  3. Create a new project in the [Google Developers Console](https://console.developers.google.com/) with an OAuth Client ID using the SHA1 fingerprint.
 See the [Android Pay tutorial](https://developers.google.com/android-pay/android/tutorial) for more information.
 
 ## Requesting Android Pay
