@@ -6,7 +6,7 @@ With Android Pay merchants can accept payments for physical goods and buyers can
 In this guide we'll walk you through how to integrate Android Pay with the judoNative Android SDK.
 
 ## Requirements
-Android Pay is compatible with devices running Android OS 4.4 (KitKat) or later. In addition to this, please check that you have a public key, received when setting up your judo account to use with Android Pay.
+Android Pay is compatible with devices running Android OS 4.4 (KitKat) or later. In addition to this, please check you have a public key, received when setting up your judo account to use with Android Pay.
 
 ## Application Flow
 When taking a payment using Android Pay the following steps are involved:
