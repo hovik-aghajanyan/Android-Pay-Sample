@@ -12,7 +12,10 @@ import com.judopay.view.SingleClickOnClickListener;
 public class PaymentActivity extends AppCompatActivity {
 
     private static final int PAYMENT_REQUEST = 101;
-    private static final String JUDO_ID = "100407196";
+
+    private static final String JUDO_ID = "<JUDO_ID>";
+    private static final String API_TOKEN = "<JUDO_API_TOKEN>";
+    private static final String API_SECRET = "<JUDO_API_SECRET>";
 
     private CurrencyEditText currencyEditText;
 
@@ -21,7 +24,7 @@ public class PaymentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
 
-        Judo.setup("823Eja2fEM6E9NAE", "382df6f458294f49f02f073e8f356f8983e2460631ea1b4c8ed4c3ee502dcbe6", Judo.Environment.SANDBOX);
+        Judo.setup(API_TOKEN, API_SECRET, Judo.SANDBOX);
 
         currencyEditText = (CurrencyEditText) findViewById(R.id.currency_edit_text);
 

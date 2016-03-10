@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,7 +95,7 @@ public class AndroidPayFragment extends Fragment implements GoogleApiClient.OnCo
                 .subscribe(new Action1<Receipt>() {
                     @Override
                     public void call(Receipt receipt) {
-                        // handle successful payment
+                        showPaymentStatusDialog(receipt);
                     }
                 }, new Action1<Throwable>() {
                     @Override
@@ -102,6 +103,18 @@ public class AndroidPayFragment extends Fragment implements GoogleApiClient.OnCo
                         // show error message
                     }
                 });
+    }
+
+    private void showPaymentStatusDialog(Receipt receipt) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        if (receipt.isSuccess()) {
+            builder.setTitle(getString(R.string.payment_successful));
+        } else {
+            builder.setTitle(getString(R.string.payment_declined))
+                    .setMessage(getString(R.string.please_check_card_details));
+        }
+        builder.show();
     }
 
     private void performFullWalletRequest(MaskedWallet maskedWallet) {
