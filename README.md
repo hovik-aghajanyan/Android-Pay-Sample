@@ -1,9 +1,9 @@
 # Android Pay judo Integration Guide
 Android Pay™ is a mobile payment solution that offers further simplicity, security and choice when making purchases with Android phones.
 
-With Android Pay merchants can accept payments for physical goods and buyers can grant merchants access to the shipping and payment information stored in their Google account.
+With Android Pay merchants can accept payments for physical goods and buyers can grant merchants access to the shipping and payment information stored in their Google account. The judoNative Android SDK can be used to accept Android Pay payments made in your app making the checkout journey event simpler and more secure.
 
-The judoNative Android SDK can be used to accept Android Pay payments made in your app making the checkout journey event simpler and more secure. In this guide we'll walk you through how to integrate Android Pay with the judoNative Android SDK.
+In this guide we'll walk you through how to integrate Android Pay with the judoNative Android SDK.
 
 ## Requirements
 Android Pay is compatible with devices running Android OS 4.4 (KitKat) or later. In addition to this, please check that you have a public key, received when setting up your judo account to use with Android Pay.
