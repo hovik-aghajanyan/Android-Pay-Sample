@@ -53,7 +53,8 @@ GoogleApiClient googleApiClient = new GoogleApiClient.Builder(this)
     .enableAutoManage(this, this)
     .build();
 ```
-Now we can use the GoogleApiClient to check if the user has Android Pay and a card available to make a payment:
+
+Use the ```isReadyToPay()``` method to check if the user has Android Pay and a card available to make a payment:
 ```java
 Wallet.Payments.isReadyToPay(googleApiClient).setResultCallback(new ResultCallback<BooleanResult>() {
    @Override
