@@ -80,7 +80,7 @@ WalletFragmentOptions options = WalletFragmentOptions.newBuilder()
        .setMode(WalletFragmentMode.BUY_BUTTON)
        .build();
 ```
-Create a ```SupportWalletFragment``` instance and initialize it with a ```MaskedWalletRequest```:
+Create a ```SupportWalletFragment``` instance and initialize it with a Masked Wallet Request:
 ```java
 SupportWalletFragment walletFragment = SupportWalletFragment.newInstance(options);
 MaskedWalletRequest walletRequest = MaskedWalletRequest.newBuilder()
