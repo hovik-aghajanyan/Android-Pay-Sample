@@ -158,18 +158,18 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
 ```
 
 ## Using the judoNative SDK with Android Pay
-
-### 1. To perform a payment with the judoNative SDK:
-To complete the payment, create an AndroidPayRequest with the token from the FullWallet response:
+For making an Android Pay request with the judoNative SDK, first create an ```AndroidPayRequest```: 
 ```java
 AndroidPayRequest androidPayRequest = new AndroidPayRequest.Builder()
         .setCurrency("GBP")
         .setAmount(new BigDecimal(paymentAmount))
         .setPaymentMethodToken(fullWallet.getPaymentMethodToken().getToken())
         .build();
+```
 
+### Perform a payment
+```java
 JudoApiService apiService = Judo.getApiService(this);
-
 apiService.androidPayPayment(androidPayRequest)
         .subscribe(new Action1<Receipt>() {
             @Override
@@ -182,7 +182,24 @@ apiService.androidPayPayment(androidPayRequest)
                 // show error message
             }
         });
-``` 
+```
+### Perform a pre auth
+```java
+JudoApiService apiService = Judo.getApiService(this);
+apiService.androidPayPreAuth(androidPayRequest)
+        .subscribe(new Action1<Receipt>() {
+            @Override
+            public void call(Receipt receipt) {
+                // handle successful pre auth
+            }
+        }, new Action1<Throwable>() {
+            @Override
+            public void call(Throwable throwable) {
+                // show error message
+            }
+        });
+```
+
 ## Going Live
 When it's time to go live you will need to update your code to use the production environment for Android Pay and the judoNative SDK:
  - When calling the Google Play Wallet library, ensure that ```WalletConstants.ENVIRONMENT_PRODUCTION``` is used instead of ```WalletConstants.ENVIRONMENT_TEST```. 
