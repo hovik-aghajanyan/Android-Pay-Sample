@@ -36,7 +36,7 @@ Next, add the meta data attributes to your app AndroidManifest.xml to enable the
 ```
 
 ## Authenticating with Android Pay
-For your app to use Android Pay, you must provide the SHA1 fingerprint of the certificate of your app in the Google Developers Console:
+To authenticate your app with Android Pay, you must provide the SHA1 fingerprint of your app's certificate in the Google Developers Console:
   1. Check your app is signed with a certificate keystore for releasing to Google Play.
   2. Run the gradle task ```signingReport``` to display the SHA1 fingerprint for your app.
   3. Create a new project in the [Google Developers Console](https://console.developers.google.com/) with an OAuth Client ID using the SHA1 fingerprint.
