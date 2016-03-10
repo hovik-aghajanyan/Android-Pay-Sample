@@ -108,7 +108,7 @@ getSupportFragmentManager()
     .replace(R.id.my_layout, walletFragment)
     .commit();
 ```
-### 3. Receiving the MaskedWallet
+### 3. Receiving the Masked Wallet
 Once the user has confirmed to make a payment with Android Pay, you will receive a MaskedWallet with the masked payment information and address details. Override the ```onActivityResult``` method in your Activity to receive the MaskedWallet:
 ```java
 @Override
@@ -124,8 +124,9 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
             break;
         }
     }
+}
 ```
-### 4. Requesting the FullWallet
+### 4. Requesting the Full Wallet
 To request the FullWallet containing the encrypted payment token, perform a FullWalletRequest with the payment amount and Google Transaction ID:
 ```java
 FullWalletRequest fullWalletRequest = FullWalletRequest.newBuilder()
@@ -138,7 +139,7 @@ FullWalletRequest fullWalletRequest = FullWalletRequest.newBuilder()
 
 Wallet.Payments.loadFullWallet(googleApiClient, fullWalletRequest, FULL_WALLET_REQUEST);
 ```
-### 5. Receiving the FullWallet
+### 5. Receiving the Full Wallet
 The response from the FullWalletRequest will be received in the Activity result:
 ```java
 @Override
