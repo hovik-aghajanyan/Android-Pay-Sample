@@ -159,7 +159,7 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 ## Using the judoNative SDK with Android Pay
 
-The final steps is to make a request to judo with the response received from Android Pay. To do this, create an AndroidPayRequest using the Builder with the required fields. For the public key, use the key received when setting up your judo account to use Android Pay.
+The final step is to make a request to judo with the response received from Android Pay. To do this, create an AndroidPayRequest using the Builder with the required fields. For the public key, use the key received when setting up your judo account to use Android Pay.
 ```java
 String token = fullWallet.getPaymentMethodToken().getToken();
 
