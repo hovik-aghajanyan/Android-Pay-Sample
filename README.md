@@ -158,18 +158,24 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
 ```
 
 ## Using the judoNative SDK with Android Pay
-To make an Android Pay request with the judoNative SDK, first create an ```AndroidPayRequest```: 
+
+The final step is to make a request to judo with the response received from Android Pay. To do this, create an AndroidPayRequest using the Builder with the required fields. For the public key, use the key received when setting up your judo account to use Android Pay.
 ```java
+String token = fullWallet.getPaymentMethodToken().getToken();
+
 AndroidPayRequest androidPayRequest = new AndroidPayRequest.Builder()
-        .setCurrency("GBP")
+        .setJudoId("1234567")
         .setAmount(new BigDecimal(paymentAmount))
-        .setPaymentMethodToken(fullWallet.getPaymentMethodToken().getToken())
+        .setCurrency(Currency.GBP)
+        .setPaymentMethodToken(token)
+        .setWalletEnvironment(WalletConstants.ENVIRONMENT_PRODUCTION)
+        .setPublicKey("public_key")
         .build();
 ```
 
-The sections below walks you through how you can perform a Payment and a Pre-authorization (Pre-auth).
+To perform the transaction, pass the ```AndroidPayRequest``` to the judoNative API service. This will perform the transaction and charge the customers payment method.
 
-#### To perform a Payment
+#### Performing a Payment
 ```java
 JudoApiService apiService = Judo.getApiService(this);
 apiService.androidPayPayment(androidPayRequest)
@@ -185,7 +191,8 @@ apiService.androidPayPayment(androidPayRequest)
             }
         });
 ```
-#### To perform a Pre-auth
+
+#### Performing a Pre-auth
 ```java
 JudoApiService apiService = Judo.getApiService(this);
 apiService.androidPayPreAuth(androidPayRequest)
