@@ -1,4 +1,7 @@
 # Integrating Android Pay with judoNative SDK
+
+##### NOTE: Android Pay is coming to the UK soon. This sample app provides you with an early look at how you can integrate Android Pay into your app using our judoNative Android SDK.
+
 Android Pay™ is a mobile payment solution that offers further simplicity, security and choice when making purchases with Android phones.
 
 With Android Pay merchants can accept payments for physical goods and services, and access buyers' shipping and payment information stored in their Google account. The judoNative Android SDK can be used to process Android Pay payments made in your app making the checkout journey even simpler and more secure.
