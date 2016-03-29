@@ -168,11 +168,17 @@ String token = fullWallet.getPaymentMethodToken().getToken();
 
 AndroidPayRequest androidPayRequest = new AndroidPayRequest.Builder()
         .setJudoId("1234567")
-        .setAmount(new BigDecimal(paymentAmount))
         .setCurrency(Currency.GBP)
-        .setPaymentMethodToken(token)
-        .setWalletEnvironment(WalletConstants.ENVIRONMENT_PRODUCTION)
-        .setPublicKey("public_key")
+        .setAmount(new BigDecimal(paymentAmount))
+        .setWallet(new com.judopay.model.Wallet.Builder()
+                .setPublicKey("public_key")
+                .setEnvironment(WalletConstants.ENVIRONMENT_PRODUCTION)
+                .setPaymentMethodToken(fullWallet.getPaymentMethodToken().getToken())
+                .setMerchantTransactionId(wallet.getMerchantTransactionId())
+                .setInstrumentDetails(wallet.getInstrumentInfos()[0].getInstrumentDetails())
+                .setInstrumentType(wallet.getInstrumentInfos()[0].getInstrumentType())
+                .setVersion(wallet.getVersionCode())
+                .build())
         .build();
 ```
 
