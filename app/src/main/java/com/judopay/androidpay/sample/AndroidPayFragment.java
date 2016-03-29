@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.BooleanResult;
@@ -43,6 +44,9 @@ public class AndroidPayFragment extends Fragment implements GoogleApiClient.OnCo
 
     private static final String AMOUNT = "0.05";
     private static final String CURRENCY = "USD";
+    private static final String JUDO_ID = "<JUDO_ID>";
+
+    private static final int ENVIRONMENT = WalletConstants.ENVIRONMENT_PRODUCTION;
 
     private GoogleApiClient googleApiClient;
     private SupportWalletFragment walletFragment;
@@ -53,7 +57,7 @@ public class AndroidPayFragment extends Fragment implements GoogleApiClient.OnCo
 
         googleApiClient = new GoogleApiClient.Builder(getActivity())
                 .addApi(Wallet.API, new Wallet.WalletOptions.Builder()
-                        .setEnvironment(WalletConstants.ENVIRONMENT_TEST)
+                        .setEnvironment(ENVIRONMENT)
                         .build())
                 .enableAutoManage(getActivity(), this)
                 .build();
@@ -82,11 +86,20 @@ public class AndroidPayFragment extends Fragment implements GoogleApiClient.OnCo
         }
     }
 
-    private void performJudoPayment(FullWallet fullWallet) {
+    private void performJudoPayment(FullWallet wallet) {
         AndroidPayRequest androidPayRequest = new AndroidPayRequest.Builder()
+                .setJudoId(JUDO_ID)
                 .setCurrency(CURRENCY)
                 .setAmount(new BigDecimal(AMOUNT))
-                .setPaymentMethodToken(fullWallet.getPaymentMethodToken().getToken())
+                .setWallet(new com.judopay.model.Wallet.Builder()
+                        .setPublicKey(getString(R.string.public_key))
+                        .setEnvironment(ENVIRONMENT)
+                        .setPaymentMethodToken(wallet.getPaymentMethodToken().getToken())
+                        .setMerchantTransactionId(wallet.getMerchantTransactionId())
+                        .setInstrumentDetails(wallet.getInstrumentInfos()[0].getInstrumentDetails())
+                        .setInstrumentType(wallet.getInstrumentInfos()[0].getInstrumentType())
+                        .setVersion(wallet.getVersionCode())
+                        .build())
                 .build();
 
         JudoApiService apiService = Judo.getApiService(getActivity());
@@ -148,7 +161,7 @@ public class AndroidPayFragment extends Fragment implements GoogleApiClient.OnCo
                 .setBuyButtonWidth(WalletFragmentStyle.Dimension.MATCH_PARENT);
 
         WalletFragmentOptions options = WalletFragmentOptions.newBuilder()
-                .setEnvironment(WalletConstants.ENVIRONMENT_TEST)
+                .setEnvironment(ENVIRONMENT)
                 .setTheme(WalletConstants.THEME_DARK)
                 .setFragmentStyle(walletStyle)
                 .setMode(WalletFragmentMode.BUY_BUTTON)
@@ -197,7 +210,7 @@ public class AndroidPayFragment extends Fragment implements GoogleApiClient.OnCo
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
+        Toast.makeText(getActivity(), "Connection failed! " + connectionResult.getErrorMessage() + ", " + connectionResult.getErrorCode(), Toast.LENGTH_SHORT).show();
     }
 
 }
