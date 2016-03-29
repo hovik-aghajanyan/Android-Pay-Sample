@@ -157,7 +157,8 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
                 }
                 break;
         }
-    }
+  }
+}
 ```
 
 ## Using the judoNative SDK with Android Pay
