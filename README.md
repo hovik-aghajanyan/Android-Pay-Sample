@@ -161,9 +161,18 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
 For making an Android Pay request with the judoNative SDK, first create an ```AndroidPayRequest```: 
 ```java
 AndroidPayRequest androidPayRequest = new AndroidPayRequest.Builder()
+        .setJudoId(JUDO_ID)
         .setCurrency("GBP")
         .setAmount(new BigDecimal(paymentAmount))
-        .setPaymentMethodToken(fullWallet.getPaymentMethodToken().getToken())
+        .setWallet(new com.judopay.model.Wallet.Builder()
+                .setPublicKey(getString(R.string.public_key))
+                .setEnvironment(ENVIRONMENT)
+                .setPaymentMethodToken(fullWallet.getPaymentMethodToken().getToken())
+                .setMerchantTransactionId(wallet.getMerchantTransactionId())
+                .setInstrumentDetails(wallet.getInstrumentInfos()[0].getInstrumentDetails())
+                .setInstrumentType(wallet.getInstrumentInfos()[0].getInstrumentType())
+                .setVersion(wallet.getVersionCode())
+                .build())
         .build();
 ```
 
