@@ -119,13 +119,11 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
 	super.onActivityResult(requestCode, resultCode, data);
 
     switch (requestCode) {
-	    case MASKED_WALLET_REQUEST:
-	        if (resultCode == Activity.RESULT_OK && data != null) {
-	            MaskedWallet maskedWallet = data.getParcelableExtra(WalletConstants.EXTRA_MASKED_WALLET);
-				// request FullWallet
-            }
-            break;
-        }
+	case MASKED_WALLET_REQUEST:
+		if (resultCode == Activity.RESULT_OK && data != null) {
+			MaskedWallet maskedWallet = data.getParcelableExtra(WalletConstants.EXTRA_MASKED_WALLET);
+			// request FullWallet
+		}
     }
 }
 ```
