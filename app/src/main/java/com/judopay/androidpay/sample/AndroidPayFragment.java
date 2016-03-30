@@ -28,8 +28,10 @@ import com.google.android.gms.wallet.fragment.WalletFragmentInitParams;
 import com.google.android.gms.wallet.fragment.WalletFragmentMode;
 import com.google.android.gms.wallet.fragment.WalletFragmentOptions;
 import com.google.android.gms.wallet.fragment.WalletFragmentStyle;
+import com.google.gson.Gson;
 import com.judopay.Judo;
 import com.judopay.JudoApiService;
+import com.judopay.api.JudoApiServiceFactory;
 import com.judopay.model.AndroidPayRequest;
 import com.judopay.model.Receipt;
 
@@ -46,7 +48,7 @@ public class AndroidPayFragment extends Fragment implements GoogleApiClient.OnCo
     private static final String CURRENCY = "USD";
     private static final String JUDO_ID = "<JUDO_ID>";
 
-    private static final int ENVIRONMENT = WalletConstants.ENVIRONMENT_PRODUCTION;
+    private static final int ENVIRONMENT = WalletConstants.ENVIRONMENT_TEST;
 
     private GoogleApiClient googleApiClient;
     private SupportWalletFragment walletFragment;
@@ -95,7 +97,7 @@ public class AndroidPayFragment extends Fragment implements GoogleApiClient.OnCo
                         .setPublicKey(getString(R.string.public_key))
                         .setEnvironment(ENVIRONMENT)
                         .setPaymentMethodToken(wallet.getPaymentMethodToken().getToken())
-                        .setMerchantTransactionId(wallet.getMerchantTransactionId())
+                        .setGoogleTransactionId(wallet.getGoogleTransactionId())
                         .setInstrumentDetails(wallet.getInstrumentInfos()[0].getInstrumentDetails())
                         .setInstrumentType(wallet.getInstrumentInfos()[0].getInstrumentType())
                         .setVersion(wallet.getVersionCode())
@@ -103,6 +105,7 @@ public class AndroidPayFragment extends Fragment implements GoogleApiClient.OnCo
                 .build();
 
         JudoApiService apiService = Judo.getApiService(getActivity());
+        Gson gson = JudoApiServiceFactory.getGson(getActivity());
 
         apiService.androidPayPayment(androidPayRequest)
                 .subscribe(new Action1<Receipt>() {
