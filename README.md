@@ -23,7 +23,7 @@ When taking a payment using Android Pay the following steps are involved:
 The Google Play Services Wallet library allows your app to call Android Pay and request the user to make a payment. To use this library, add a new dependency in the build.gradle file of your app module:
 ```groovy
 dependencies {
-	compile 'com.google.android.gms:play-services-wallet:8.4.0'
+	compile 'com.google.android.gms:play-services-wallet:9.0.0'
 }
 ```
 
