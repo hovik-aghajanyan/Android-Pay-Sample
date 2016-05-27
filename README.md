@@ -51,7 +51,7 @@ To check if Android Pay is available we'll first need to create a GoogleApiClien
 ```java
 GoogleApiClient googleApiClient = new GoogleApiClient.Builder(this)
     .addApi(Wallet.API, new Wallet.WalletOptions.Builder()
-        .setEnvironment(WalletConstants.ENVIRONMENT_TEST)
+        .setEnvironment(WalletConstants.ENVIRONMENT_PRODUCTION)
         .build())
     .enableAutoManage(this, this)
     .build();
@@ -79,7 +79,7 @@ PaymentMethodTokenizationParameters parameters = PaymentMethodTokenizationParame
 Create a WalletFragmentOptions instance to configure the appearance of the Android Pay button:
 ```java
 WalletFragmentOptions options = WalletFragmentOptions.newBuilder()
-       .setEnvironment(WalletConstants.ENVIRONMENT_TEST)
+       .setEnvironment(WalletConstants.ENVIRONMENT_PRODUCTION)
        .setTheme(WalletConstants.THEME_LIGHT)
        .setMode(WalletFragmentMode.BUY_BUTTON)
        .build();
@@ -152,10 +152,9 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
       if (resultCode == Activity.RESULT_OK && data.hasExtra(WalletConstants.EXTRA_FULL_WALLET)) {
         FullWallet fullWallet = data.getParcelableExtra(WalletConstants.EXTRA_FULL_WALLET);
         // call judoNative SDK to perform payment
-                }
-                break;
-        }
-    }
+      }
+      break;
+  }
 }
 ```
 
