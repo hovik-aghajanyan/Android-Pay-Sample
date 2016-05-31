@@ -162,17 +162,15 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 The final step is to make a request to judo with the response received from Android Pay. To do this, create an AndroidPayRequest using the Builder with the required fields. For the public key, use the key received when setting up your judo account to use Android Pay.
 ```java
-String token = fullWallet.getPaymentMethodToken().getToken();
-
 AndroidPayRequest androidPayRequest = new AndroidPayRequest.Builder()
         .setJudoId("1234567")
         .setCurrency(Currency.GBP)
-        .setAmount(new BigDecimal(paymentAmount))
+        .setAmount(new BigDecimal("1.00"))
         .setWallet(new com.judopay.model.Wallet.Builder()
-                .setPublicKey("public_key")
+                .setPublicKey("<YOUR ANDROID PAY PUBLIC KEY>")
                 .setEnvironment(WalletConstants.ENVIRONMENT_PRODUCTION)
-                .setPaymentMethodToken(fullWallet.getPaymentMethodToken().getToken())
-                .setMerchantTransactionId(wallet.getMerchantTransactionId())
+                .setPaymentMethodToken(wallet.getPaymentMethodToken().getToken())
+                .setGoogleTransactionId(wallet.getGoogleTransactionId())
                 .setInstrumentDetails(wallet.getInstrumentInfos()[0].getInstrumentDetails())
                 .setInstrumentType(wallet.getInstrumentInfos()[0].getInstrumentType())
                 .setVersion(wallet.getVersionCode())
