@@ -1,4 +1,4 @@
-# Integrating Android Pay with judoNative SDK
+# Integrating Android Pay with Judopay Android SDK
 
 ##### NOTE: Android Pay has launched in the UK. This sample app provides you with a look at how you can integrate Android Pay into your app using Judo's Android SDK.
 
