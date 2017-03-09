@@ -23,7 +23,7 @@ When taking a payment using Android Pay the following steps are involved:
 The Google Play Services Wallet library allows your app to call Android Pay and request the user to make a payment. To use this library, add a new dependency in the build.gradle file of your app module:
 ```groovy
 dependencies {
-	compile 'com.google.android.gms:play-services-wallet:9.0.0'
+	compile 'com.google.android.gms:play-services-wallet:10.2.0'
 }
 ```
 
@@ -111,7 +111,7 @@ getSupportFragmentManager()
     .replace(R.id.my_layout, walletFragment)
     .commit();
 ```
-#### 3. Receiving the Masked Wallet
+#### 3. Receiving the MaskedWallet
 Once the user has confirmed to make a payment with Android Pay, you will receive a MaskedWallet with the masked payment information and address details. Override the ```onActivityResult``` method in your Activity to receive the MaskedWallet:
 ```java
 @Override
@@ -127,7 +127,7 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
     }
 }
 ```
-#### 4. Requesting the Full Wallet
+#### 4. Requesting the FullWallet
 To request the FullWallet containing the encrypted payment token, perform a FullWalletRequest with the payment amount and Google Transaction ID:
 ```java
 FullWalletRequest fullWalletRequest = FullWalletRequest.newBuilder()
@@ -140,7 +140,7 @@ FullWalletRequest fullWalletRequest = FullWalletRequest.newBuilder()
 
 Wallet.Payments.loadFullWallet(googleApiClient, fullWalletRequest, FULL_WALLET_REQUEST);
 ```
-#### 5. Receiving the Full Wallet
+#### 5. Receiving the FullWallet
 The response from the FullWalletRequest will be received in the Activity result:
 ```java
 @Override
@@ -158,7 +158,7 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 ```
 
-## Using the judoNative SDK with Android Pay
+## Using the Judopay SDK with Android Pay
 
 The final step is to make a request to judo with the response received from Android Pay. To do this, create an AndroidPayRequest using the Builder with the required fields. For the public key, use the key received when setting up your judo account to use Android Pay.
 ```java
@@ -167,13 +167,12 @@ AndroidPayRequest androidPayRequest = new AndroidPayRequest.Builder()
         .setCurrency(Currency.GBP)
         .setAmount(new BigDecimal("1.00"))
         .setWallet(new com.judopay.model.Wallet.Builder()
-                .setPublicKey("<YOUR ANDROID PAY PUBLIC KEY>")
+                .setPublicKey("<YOUR_ANDROID_PAY_PUBLIC_KEY>")
                 .setEnvironment(WalletConstants.ENVIRONMENT_PRODUCTION)
                 .setPaymentMethodToken(wallet.getPaymentMethodToken().getToken())
                 .setGoogleTransactionId(wallet.getGoogleTransactionId())
                 .setInstrumentDetails(wallet.getInstrumentInfos()[0].getInstrumentDetails())
                 .setInstrumentType(wallet.getInstrumentInfos()[0].getInstrumentType())
-                .setVersion(wallet.getVersionCode())
                 .build())
         .build();
 ```
