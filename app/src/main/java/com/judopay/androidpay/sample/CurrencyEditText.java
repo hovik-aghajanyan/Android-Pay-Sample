@@ -8,15 +8,11 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.widget.EditText;
 
-import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
-public class CurrencyEditText extends EditText {
-
+public class CurrencyEditText extends android.support.v7.widget.AppCompatEditText {
     private String currencySymbol = "$";
-
     private DecimalFormat decimalFormat = new DecimalFormat("0.00");
     private InputFilter[] filters;
 
@@ -63,12 +59,10 @@ public class CurrencyEditText extends EditText {
         addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
@@ -113,5 +107,4 @@ public class CurrencyEditText extends EditText {
         }
         return "";
     }
-
 }
